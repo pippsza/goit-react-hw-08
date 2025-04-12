@@ -3,10 +3,10 @@ import SearchBox from "../components/SearchBox/SearchBox";
 import Error from "../components/Error/Error";
 import ContactList from "../components/ContactList/ContactList";
 import Loader from "../components/Loader/Loader";
-import { selectError, selectLoading } from "../redux/contacts/contactsSlice";
+import { selectError, selectLoading } from "../redux/contacts/selectors";
 import { useDispatch, useSelector } from "react-redux";
 
-import { selectContacts } from "../redux/contacts/contactsSlice";
+import { selectContacts } from "../redux/contacts/selectors";
 export default function ContactsPage() {
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectLoading);

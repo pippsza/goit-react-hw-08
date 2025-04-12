@@ -1,25 +1,30 @@
 import css from "./App.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchAll } from "../redux/contacts/contactsOps";
+import { refreshUser } from "../redux/auth/operations";
 import Layout from "./Layout/Layout";
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router";
 import RegistrationPage from "../pages/RegistrationPage";
 import LoginPage from "../pages/LoginPage";
+import { selectIsRefreshing } from "../redux/auth/selectors";
 const ContactsPage = lazy(() => import(`../pages/ContactsPage`));
 const HomePage = lazy(() => import(`../pages/HomePage`));
 const PrivateRoute = lazy(() => import(`./PrivateRoute`));
 const RestrictedRoute = lazy(() => import(`./RestrictedRoute`));
-
+const NotFoundPage = lazy(() => import(`../pages/NotFoundPage`));
+// pippsza@gmail.com
 export default function App() {
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(fetchAll());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <strong>Getting user data please wait...</strong>
+  ) : (
     <Layout>
       <div className={css.mainApp}>
         <Suspense
@@ -56,6 +61,7 @@ export default function App() {
               <PrivateRoute component={<ContactsPage />} redirectTo="/login" />
             }
           />
+          <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
         </Routes>
       </div>
     </Layout>

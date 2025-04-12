@@ -1,10 +1,9 @@
-import LogRegForm from "../components/Form/Form";
+import LoginForm from "../components/LoginForm/LoginForm";
 
 export default function LoginPage() {
   return (
     <>
-      <h2>Login page</h2>
-      <LogRegForm bttnMessage="Login"></LogRegForm>
+      <LoginForm></LoginForm>
     </>
   );
 }
