@@ -5,12 +5,19 @@ import ContactList from "../components/ContactList/ContactList";
 import Loader from "../components/Loader/Loader";
 import { selectError, selectLoading } from "../redux/contacts/selectors";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchAll } from "../redux/contacts/operations";
 
 import { selectContacts } from "../redux/contacts/selectors";
 export default function ContactsPage() {
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectLoading);
   const isError = useSelector(selectError);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAll());
+  }, [dispatch]);
   return (
     <>
       <h1> Phonebook</h1>

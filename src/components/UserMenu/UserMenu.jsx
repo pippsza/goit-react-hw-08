@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
-import { NavLink } from "react-router";
-// import { logOut } from "../../redux/auth/operations";
+import { NavLink } from "react-router-dom";
+import { logOut } from "../../redux/auth/operations";
 import css from "./UserMenu.module.css";
 import clsx from "clsx";
 
@@ -10,7 +10,7 @@ export default function UserMenu() {
   const user = useSelector(selectUser);
 
   const handleLogout = () => {
-    // dispatch(logOut());
+    dispatch(logOut());
   };
   const getLinkStyles = ({ isActive }) => {
     return clsx(css.link, isActive && css.active);
