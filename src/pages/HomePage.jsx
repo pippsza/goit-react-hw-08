@@ -1,6 +1,7 @@
 export default function HomePage() {
   return (
     <>
+hello fron mobile! <hr/>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus,
       recusandae temporibus totam ipsa alias voluptatum ea maiores quaerat odio
       est officia consequatur, perferendis expedita facere, numquam veniam
