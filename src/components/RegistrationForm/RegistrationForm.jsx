@@ -2,13 +2,18 @@ import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { register } from "../../redux/auth/operations";
 import css from "./RegistrationForm.module.css";
+import toast from "react-hot-toast";
 import * as Yup from "yup";
 export default function RegistrationForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    console.log("sumbmit");
-    dispatch(register(values));
+    dispatch(register(values))
+      .unwrap()
+      .then(() => toast.success("You've registered!"))
+      .catch(() => {
+        toast.error("Incorrect email or password!");
+      });
     actions.resetForm();
   };
   const UserSchema = Yup.object().shape({

@@ -1,18 +1,17 @@
 export default function HomePage() {
   return (
     <>
-hello fron mobile! <hr/>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus,
-      recusandae temporibus totam ipsa alias voluptatum ea maiores quaerat odio
-      est officia consequatur, perferendis expedita facere, numquam veniam
-      adipisci aspernatur! Iure ipsam quo sint nulla placeat repudiandae
-      delectus eligendi, autem qui eum, error distinctio aliquid quas, inventore
-      sit magnam porro sapiente quisquam impedit ab tempore blanditiis totam
-      laudantium. Nesciunt, officia? Cupiditate reiciendis, nemo, vel odit
-      aspernatur enim explicabo unde, laudantium vero corporis dignissimos.
-      Pariatur at iure, vero quod maiores alias voluptas est maxime quos labore
-      voluptates sunt sint exercitationem sed nisi assumenda cumque illum rerum
-      enim velit fuga sapiente debitis necessitatibus.
+      <h1> Welcome! </h1>
+      <p>
+        This project showcases my frontend development skills using React. It
+        features client-side routing with React Router, state management via
+        Redux, and state persistence using Redux Persist. A key part of the app
+        is user registration and authentication with a connected backend,
+        demonstrating my understanding of API integration, handling server
+        responses, and securely managing tokens. The project is built with
+        scalability and code readability in mind. I hope it serves as a solid
+        example of my approach to building modern web applications.
+      </p>
     </>
   );
 }

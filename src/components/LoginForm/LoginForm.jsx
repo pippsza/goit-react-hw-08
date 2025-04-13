@@ -3,14 +3,17 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { logIn } from "../../redux/auth/operations";
 import css from "./LoginForm.module.css";
 import * as Yup from "yup";
+import toast from "react-hot-toast";
 export default function LoginForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    console.log("WORK");
     dispatch(logIn(values))
       .unwrap()
-      .then(() => console.log("Login success"));
+      .then(() => toast.success("You've logined!"))
+      .catch(() => {
+        toast.error("Incorrect email or password!");
+      });
 
     actions.resetForm();
   };
@@ -26,31 +29,33 @@ export default function LoginForm() {
       .max(50, "Must be less then 50 chars"),
   });
   return (
-    <Formik
-      initialValues={{
-        email: "",
-        password: "",
-      }}
-      validationSchema={UserSchema}
-      onSubmit={handleSubmit}
-    >
-      <Form className={css.form} autoComplete="off">
-        <label className={css.label}>
-          Email
-          <Field type="email" name="email" />{" "}
-          <ErrorMessage className={css.error} name="email" component="span" />
-        </label>
-        <label className={css.label}>
-          Password
-          <Field type="password" name="password" />{" "}
-          <ErrorMessage
-            className={css.error}
-            name="password"
-            component="span"
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </Form>
-    </Formik>
+    <>
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        validationSchema={UserSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form className={css.form} autoComplete="off">
+          <label className={css.label}>
+            Email
+            <Field type="email" name="email" />{" "}
+            <ErrorMessage className={css.error} name="email" component="span" />
+          </label>
+          <label className={css.label}>
+            Password
+            <Field type="password" name="password" />{" "}
+            <ErrorMessage
+              className={css.error}
+              name="password"
+              component="span"
+            />
+          </label>
+          <button type="submit">Log In</button>
+        </Form>
+      </Formik>
+    </>
   );
 }

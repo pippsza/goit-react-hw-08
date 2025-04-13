@@ -6,16 +6,18 @@ export default function AuthNav() {
     return clsx(css.link, isActive && css.active);
   };
   return (
-    <div>
+    <>
       <NavLink to="/" className={getLinkStyles}>
         Home
       </NavLink>
-      <NavLink className={getLinkStyles} to="/register">
-        Register
-      </NavLink>
-      <NavLink className={getLinkStyles} to="/login">
-        Log In
-      </NavLink>
-    </div>
+      <div>
+        <NavLink className={getLinkStyles} to="/register">
+          Register
+        </NavLink>
+        <NavLink className={getLinkStyles} to="/login">
+          Log In
+        </NavLink>
+      </div>
+    </>
   );
 }

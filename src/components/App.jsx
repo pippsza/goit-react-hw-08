@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { refreshUser } from "../redux/auth/operations";
 import Layout from "./Layout/Layout";
+import { Toaster } from "react-hot-toast";
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import RegistrationPage from "../pages/RegistrationPage";
@@ -23,17 +24,22 @@ export default function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <strong>Getting user data please wait...</strong>
+    <span className={css.loader}></span>
   ) : (
     <Layout>
+      <Toaster
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: "white",
+            color: "black",
+            border: "black solid 2px",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+          },
+        }}
+      />
       <div className={css.mainApp}>
-        <Suspense
-          fallback={
-            <p>
-              <b>Loading page...</b>
-            </p>
-          }
-        >
+        <Suspense fallback={<span className={css.loader}></span>}>
           <Routes>
             <Route path="/" element={<HomePage></HomePage>}></Route>
             <Route

@@ -1,8 +1,3 @@
-/**
- * - If the user is logged in, render the component
- * - Otherwise render <Navigate> to redirectTo
- */
-
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { selectIsLoggedIn } from "../redux/auth/selectors";

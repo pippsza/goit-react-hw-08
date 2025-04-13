@@ -33,7 +33,7 @@ export default function UserMenu() {
       </nav>
 
       <p className={css.username}>Welcome, {user.name}</p>
-      <button type="button" onClick={handleLogout}>
+      <button type="button" className={css.button} onClick={handleLogout}>
         Logout
       </button>
     </>

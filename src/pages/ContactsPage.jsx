@@ -22,7 +22,7 @@ export default function ContactsPage() {
     <>
       <h1> Phonebook</h1>
       <ContactForm />
-      <SearchBox /> {isLoading && <Loader>Loading message</Loader>}
+      <SearchBox /> {isLoading && <Loader />}
       {isError && <Error>Error message</Error>}
       {contacts.length > 0 && <ContactList />}
     </>

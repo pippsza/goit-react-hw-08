@@ -7,6 +7,10 @@
   flex-direction: column;
   margin-bottom: 16px;
 }
-.error {
+.label > span {
+  /* text-align: center; */
+  color: rgba(red, red, red, 0.1);
   color: red;
+  text-align: center;
+  font-weight: 300;
 }
