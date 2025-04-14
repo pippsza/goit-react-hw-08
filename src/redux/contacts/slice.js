@@ -1,18 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createSelector } from "@reduxjs/toolkit";
-import { fetchAll, addContact, deleteContact } from "./operations";
-import { selectNameFilter } from "../filters/selectors";
-import { selectContacts } from "./selectors";
 
-export const selectFilteredContacts = createSelector(
-  [selectContacts, selectNameFilter],
-  (contacts, textFilter) => {
-    console.log("selectFilteredContacts", Date.now());
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(textFilter.toLowerCase())
-    );
-  }
-);
+import { fetchAll, addContact, deleteContact } from "./operations";
+
+import { logOut } from "../auth/operations";
 
 const slice = createSlice({
   name: "contacts",
@@ -56,6 +46,9 @@ const slice = createSlice({
       .addCase(deleteContact.rejected, (state) => {
         state.loading = false;
         state.error = true;
+      })
+      .addCase(logOut.fulfilled, (state) => {
+        state.items = [];
       });
   },
 });
